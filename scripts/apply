@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-terraform plan -out=myplan.tfplan
-terraform apply myplan.tfplan
+terraform plan -out=myplan.tfplan -lock=false
+terraform apply myplan.tfplan -lock=false
