@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+terraform plan -out=myplan.tfplan
+terraform apply myplan.tfplan
