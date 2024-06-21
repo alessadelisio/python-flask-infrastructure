@@ -4,7 +4,7 @@ variable "region_name" {
   default     = "us-central1"
 }
 
-variable "project_id" {
+variable "repository_name" {
   type        = string
-  description = "Google Cloud Platform Project ID"
+  description = "Artifact Registry name"
 }
