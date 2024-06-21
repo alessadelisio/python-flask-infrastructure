@@ -1,0 +1,12 @@
+[
+    "roles/artifactregistry.admin",
+    "roles/run.admin",
+    "roles/run.serviceAgent",
+    "roles/logging.viewer",
+    "roles/iam.serviceAccountTokenCreator",
+    "roles/serviceusage.serviceUsageConsumer",
+    "roles/firebase.admin",
+    "roles/cloudfunctions.admin",
+    "roles/secretmanager.admin",
+    "roles/storage.admin"
+  ]
