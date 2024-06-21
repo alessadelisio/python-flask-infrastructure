@@ -20,3 +20,11 @@ module "iam" {
   project_id         = var.project_id
   service_account_id = var.service_account_id
 }
+
+module "registry" {
+  source = "./modules/registry"
+
+  depends_on  = [module.apis]
+  project_id  = var.project_id
+  region_name = var.region_name
+}
