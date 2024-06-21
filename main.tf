@@ -24,7 +24,7 @@ module "iam" {
 module "registry" {
   source = "./modules/registry"
 
-  depends_on  = [module.apis]
-  project_id  = var.project_id
-  region_name = var.region_name
+  depends_on      = [module.apis]
+  repository_name = var.repository_name
+  region_name     = var.region_name
 }

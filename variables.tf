@@ -14,6 +14,11 @@ variable "region_name" {
   default     = "us-central1"
 }
 
+variable "repository_name" {
+  type        = string
+  description = "Artifact Registry name"
+}
+
 variable "service_account_id" {
   type        = string
   description = "Name of the IAM Service Account"
