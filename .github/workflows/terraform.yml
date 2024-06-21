@@ -26,7 +26,7 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Plan
+      - name: Terraform Plan and Apply
         env:
           TF_VAR_project_id: ${{ vars.project_id }}
           TF_VAR_service_account_id: ${{ vars.service_account_id }}
