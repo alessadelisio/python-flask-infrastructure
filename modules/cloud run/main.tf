@@ -1,5 +1,5 @@
-resource "google_cloud_run_v2_service" "default" {
-  name     = var.cloud_run_app
+resource "google_cloud_run_service" "service" {
+  name     = var.service_name
   location = var.region_name
 
   template {
@@ -7,32 +7,31 @@ resource "google_cloud_run_v2_service" "default" {
       containers {
         image = var.repository_name
         ports {
-          name           = "http1"
+          name = "http1"
           container_port = 8080
         }
       }
+
     }
+
     metadata {
       annotations = {
-        "run.googleapis.com/ingress" = "all"
-        "run.googleapis.com/http2"   = "true"
+        "run.googleapis.com/ingress"     = "all"
+        "run.googleapis.com/http2"       = "true"
       }
     }
   }
-}
 
-data "google_iam_policy" "noauth" {
-  binding {
-    role    = "roles/run.invoker"
-    members = ["allUsers"]
+  traffic {
+    percent         = 100
+    latest_revision = true
   }
+
+  autogenerate_revision_name = true
 }
 
-resource "google_cloud_run_service_iam_member" "noauth" {
-  location = google_cloud_run_v2_service.default.location
-  project  = google_cloud_run_v2_service.default.project
-  service  = google_cloud_run_v2_service.default.name
-
-  role   = "roles/run.invoker"
-  member = "allUsers"
+resource "google_project_iam_member" "run_invoker" {
+  project = var.project_id
+  role    = "roles/run.invoker"
+  member  = "serviceAccount:${google_service_account.service_account.email}"
 }

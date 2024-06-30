@@ -30,9 +30,12 @@ module "registry" {
 }
 
 
-module "cloud-run" {
-  source = "./modules/cloud-run"
-  region_name = var.region_name
-  cloud_run_app     = var.cloud_run_app
-  repository_name = var.repository_name  
+module "cloud_run_production" {
+  source              = "./modules/cloud-run"
+  service_name        = "production-service"
+  project_id          = var.project_id
+  region_name         = var.region_name
+  image               = var.repository_name
+  container_concurrency = 80
+  invoker_identity    = "serviceAccount:${google_service_account.service_account.email}"
 }
