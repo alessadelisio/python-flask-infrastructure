@@ -23,3 +23,7 @@ variable "service_account_id" {
   type        = string
   description = "Name of the IAM Service Account"
 }
+
+variable "cloud_run_app" {
+  type = string
+}

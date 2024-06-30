@@ -33,6 +33,7 @@ jobs:
           TF_VAR_region_name: ${{ vars.region_name }}
           TF_VAR_bucket_name: ${{ vars.bucket_name }}
           TF_VAR_repository_name: ${{ vars.repository_name }}
+          TF_VAR_cloud_run_app: ${{ vars.cloud_run_app }}
 
         run: ./scripts/apply
       
