@@ -1,11 +1,11 @@
-resource "google_cloud_run_service" "service" {
+resource "google_cloud_run_service" "default" {
   name     = var.service_name
-  location = var.region_name
+  location = var.region
 
   template {
     spec {
       containers {
-        image = var.repository_name
+        image = var.image
         ports {
           name = "http1"
           container_port = 8080
@@ -28,10 +28,4 @@ resource "google_cloud_run_service" "service" {
   }
 
   autogenerate_revision_name = true
-}
-
-resource "google_project_iam_member" "run_invoker" {
-  project = var.project_id
-  role    = "roles/run.invoker"
-  member  = "serviceAccount:${google_service_account.service_account.email}"
 }

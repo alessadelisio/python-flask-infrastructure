@@ -29,14 +29,20 @@ module "registry" {
   region_name     = var.region_name
 }
 
+module "cloud-run-production" {
+  source       = "./modules/cloud-run"
 
-module "cloud-run" {
-  source              = "./modules/cloud-run"
   depends_on      = [module.apis]
+  service_name = "production-application-alessadelisio"
+  region       = var.region_name
+  image        = "gcr.io/${var.project_id}/production-application-alessadelisio:latest"
+}
 
-  service_name        = "production-service"
-  project_id          = var.project_id
-  region_name         = var.region_name
-  repository_name               = var.repository_name
-  invoker_identity    = "serviceAccount:${google_service_account.service_account.email}"
+module "cloud-run-staging" {
+  source       = "./modules/cloud-run"
+
+  depends_on      = [module.apis]
+  service_name = "staging-application-alessadelisio"
+  region       = var.region_name
+  image        = "gcr.io/${var.project_id}/staging-application-alessadelisio:latest"
 }

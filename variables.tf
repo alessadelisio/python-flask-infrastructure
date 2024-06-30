@@ -24,6 +24,8 @@ variable "service_account_id" {
   description = "Name of the IAM Service Account"
 }
 
-variable "cloud_run_app" {
-  type = string
+variable "image" {
+  description = "Imagen del contenedor"
+  type        = string
 }
+
