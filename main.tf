@@ -28,3 +28,24 @@ module "registry" {
   repository_name = var.repository_name
   region_name     = var.region_name
 }
+
+
+module "cloud_run_staging" {
+  source              = "./modules/cloud-run"
+  service_name        = "staging-service"
+  project_id          = var.project_id
+  region_name         = var.region_name
+  image               = "gcr.io/your-gcp-project-id/your-staging-image"
+  container_concurrency = 80
+  invoker_identity    = "your-invoker-service-account@your-gcp-project-id.iam.gserviceaccount.com"
+}
+
+module "cloud_run_production" {
+  source              = "./modules/cloud-run"
+  service_name        = "production-service"
+  project_id          = var.project_id
+  region_name         = var.region_name
+  image               = "gcr.io/your-gcp-project-id/your-production-image"
+  container_concurrency = 80
+  invoker_identity    = "your-invoker-service-account@your-gcp-project-id.iam.gserviceaccount.com"
+}
