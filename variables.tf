@@ -23,9 +23,3 @@ variable "service_account_id" {
   type        = string
   description = "Name of the IAM Service Account"
 }
-
-variable "image" {
-  description = "Imagen del contenedor"
-  type        = string
-}
-

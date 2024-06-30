@@ -29,20 +29,18 @@ module "registry" {
   region_name     = var.region_name
 }
 
-module "cloud-run-production" {
+module "production_application" {
   source       = "./modules/cloud-run"
-
-  depends_on      = [module.apis]
   service_name = "production-application-alessadelisio"
-  region       = var.region_name
-  image        = "gcr.io/${var.project_id}/production-application-alessadelisio:latest"
+  project_id   = var.project_id
+  region_name  = var.region_name
+  image        = "gcr.io/${var.project_id}/production-application-alessadelisio"
 }
 
-module "cloud-run-staging" {
+module "staging_application" {
   source       = "./modules/cloud-run"
-
-  depends_on      = [module.apis]
   service_name = "staging-application-alessadelisio"
-  region       = var.region_name
-  image        = "gcr.io/${var.project_id}/staging-application-alessadelisio:latest"
+  project_id   = var.project_id
+  region_name  = var.region_name
+  image        = "gcr.io/${var.project_id}/staging-application-alessadelisio"
 }

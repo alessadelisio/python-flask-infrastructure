@@ -1,31 +1,38 @@
-resource "google_cloud_run_service" "default" {
+resource "google_cloud_run_service" "service" {
   name     = var.service_name
-  location = var.region
+  location = var.region_name
+  project  = var.project_id
+
+  metadata {
+    annotations = {
+      "run.googleapis.com/client-protocol" = "HTTP2"
+    }
+  }
 
   template {
+    metadata {
+      annotations = {
+        "run.googleapis.com/client-protocol" = "HTTP2"
+      }
+    }
     spec {
       containers {
         image = var.image
         ports {
           name = "http1"
           container_port = 8080
+          protocol = "TCP"
         }
-      }
-
-    }
-
-    metadata {
-      annotations = {
-        "run.googleapis.com/ingress"     = "all"
-        "run.googleapis.com/http2"       = "true"
+        env {
+          name  = "PORT"
+          value = "8080"
+        }
       }
     }
   }
 
   traffic {
-    percent         = 100
     latest_revision = true
+    percent         = 100
   }
-
-  autogenerate_revision_name = true
 }

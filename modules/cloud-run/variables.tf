@@ -1,17 +1,20 @@
+# modules/cloud-run/variables.tf
 variable "service_name" {
-  description = "Nombre del servicio de Cloud Run"
   type        = string
+  description = "The name of the Cloud Run service"
 }
 
-variable "region" {
-  description = "Región donde se desplegará el servicio de Cloud Run"
+variable "project_id" {
   type        = string
-  default     = "us-central1"
+  description = "Google Cloud Platform Project ID"
+}
+
+variable "region_name" {
+  type        = string
+  description = "The region where the service will be deployed"
 }
 
 variable "image" {
-  description = "Imagen del contenedor"
   type        = string
+  description = "The container image to deploy"
 }
-
-
