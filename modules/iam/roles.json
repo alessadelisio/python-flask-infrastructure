@@ -9,5 +9,6 @@
     "roles/firebase.admin",
     "roles/cloudfunctions.admin",
     "roles/secretmanager.admin",
-    "roles/storage.admin"
+    "roles/storage.admin",
+    "roles/iam.serviceAccountUser"
   ]
