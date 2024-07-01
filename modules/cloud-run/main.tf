@@ -23,10 +23,6 @@ resource "google_cloud_run_service" "service" {
           container_port = 8080
           protocol = "TCP"
         }
-        env {
-          name  = "PORT"
-          value = "8080"
-        }
       }
     }
   }
