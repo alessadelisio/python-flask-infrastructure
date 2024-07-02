@@ -1,6 +1,7 @@
 [
     "roles/artifactregistry.admin",
     "roles/run.admin",
+    "roles/run.invoker",
     "roles/run.serviceAgent",
     "roles/logging.viewer",
     "roles/iam.serviceAccountTokenCreator",
@@ -8,5 +9,6 @@
     "roles/firebase.admin",
     "roles/cloudfunctions.admin",
     "roles/secretmanager.admin",
-    "roles/storage.admin"
+    "roles/storage.admin",
+    "roles/iam.serviceAccountUser"
   ]
