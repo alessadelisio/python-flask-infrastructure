@@ -3,6 +3,11 @@ variable "bucket_name" {
   description = "Bucket Name"
 }
 
+variable "bucket_temporary" {
+  type        = string
+  description = "Bucket Name"
+}
+
 variable "project_id" {
   type        = string
   description = "Google Cloud Platform Project ID"
