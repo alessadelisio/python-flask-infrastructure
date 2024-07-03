@@ -7,10 +7,11 @@ module "apis" {
 module "cloud-storage" {
   source = "./modules/cloud-storage"
 
-  depends_on  = [module.apis]
-  bucket_name = var.bucket_name
-  project_id  = var.project_id
-  region_name = var.region_name
+  depends_on       = [module.apis]
+  bucket_name      = var.bucket_name
+  bucket_temporary = var.bucket_temporary
+  project_id       = var.project_id
+  region_name      = var.region_name
 }
 
 module "iam" {
